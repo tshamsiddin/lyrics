@@ -12,7 +12,8 @@ from genuis import azlyrics
 
 logging.basicConfig(level=logging.INFO)
 
-API_TOKEN ='1924710903:AAFDQUeR8INuOA_VjNHro8CsHiZspejuGPU'
+#API_TOKEN ='1924710903:AAFDQUeR8INuOA_VjNHro8CsHiZspejuGPU'
+API_TOKEN='1900736110:AAHSDh5cjb2dPWiBQwQCtGLlY-NcmFqDepQ'
 
 
 bot = Bot(token=API_TOKEN)
@@ -65,7 +66,9 @@ async def process_age(message: types.Message, state: FSMContext):
     await state.update_data(song=message.text)
 
     async with state.proxy() as data:
+        data['song']=message.text
         markup = types.ReplyKeyboardRemove()
+
 
         await bot.send_message(
             message.chat.id,
